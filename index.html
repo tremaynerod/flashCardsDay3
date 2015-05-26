@@ -13,7 +13,7 @@
             <div ng-include = " 'templates/CategoryButtons.html' ">
             </div>
             <!-- <div ng-include = " 'templates/FlashCards.html' "></div> -->
-            <flash-card></flash-card>
+            <flash-card card="flashCard" ng-repeat="flashCard in flashCards"></flash-card>
             
             <loader></loader>
         </div>
@@ -24,6 +24,7 @@
         <script src="/js/factories/FlashCardsFactory.js"></script>
         <script src="/js/controllers/StatsController.js"></script>
         <script src="/js/directives/loader/loader.js"></script>
+        <script src="/js/directives/border.js"></script>
         <script src="/js/directives/loader/flashCard.js"></script>
     </body>
 </html>

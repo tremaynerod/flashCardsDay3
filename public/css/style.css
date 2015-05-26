@@ -4,6 +4,11 @@
 #loader{
   display: block;
   margin: 0 auto;
+}
+
+.border{
+  border: 10px solid black;
+  color: red;
 
 }
 
