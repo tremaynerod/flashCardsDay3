@@ -58,6 +58,10 @@
     color: red; }
 
 #statistics {
+  position: fixed;
+  top: 1px;
+  right: 1px;
+
   padding: 40px; }
   #statistics:before, #statistics:after {
     content: " ";
