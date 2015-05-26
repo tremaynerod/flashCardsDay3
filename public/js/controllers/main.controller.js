@@ -20,16 +20,21 @@ app.controller('MainController', function ($scope, FlashCardsFactory, ScoreFacto
 		$scope.Node 
 		category === "Node"
 
+		$scope.loadCheck = FlashCardsFactory.loadcheck;
+
 		
-		$scope.results = FlashCardsFactory.getFlashCards(category);
+		$scope.results = FlashCardsFactory.getFlashCards(category)
 	
 		$scope.flashCards = $scope.results.then(function(data){
 			$scope.flashCards = data;	
+			$scope.loadCheck = false;
 		})
 
 		//add class to button div
 
 	};	
+
+	
 
 	$scope.getCategoryCards();
 
