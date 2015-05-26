@@ -1,6 +1,8 @@
 var path = require('path');
 var express = require('express');
 var FlashCardModel = require('./models/flash-card-model');
+var bodyParser = require('body-parser');
+var logger = require('morgan');
 
 var app = express(); // Create an express app!
 module.exports = app; // Export it so it can be require('')'d
@@ -22,25 +24,44 @@ var indexHtmlPath = path.join(__dirname, '../index.html');
 // e.g. angular.js, style.css
 app.use(express.static(publicPath));
 
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
 // If we're hitting our home page, serve up our index.html file!
 app.get('/', function (req, res) {
     res.sendFile(indexHtmlPath);
 });
 
+
 app.use(function (req, res, next) {
-	console.log('made it')
-	next();
+    next();
+});
+
+app.post('/cards', function (req, res) {
+    console.log("card post route was hit")
+    var body = req.body;
+    //get info off body
+    
+
+    var newCard = new FlashCardModel(req.body);
+
+    newCard.save(function(err, page) {
+        res.redirect("/");
+    })
 });
 
 app.get('/cards', function (req, res) {
 
+    
     var modelParams = {};
 
     if (req.query.category) {
-    	modelParams.category = req.query.category;
+        modelParams.category = req.query.category;
     }
 
     FlashCardModel.find(modelParams, function (err, cards) {
+        console.log(cards.length)
         setTimeout(function () {
             res.send(cards);
         }, Math.random() * 1000);
