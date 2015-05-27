@@ -1,4 +1,4 @@
-app.directive("flashCard", function($rootScope, $http, FlashCardsFactory, ScoreFactory){
+app.directive("flashCard", function(FlashCardsFactory, ScoreFactory){
 	return{
 		restrict: 'E',
 		templateUrl: 'templates/FlashCards.html',
@@ -20,16 +20,50 @@ app.directive("flashCard", function($rootScope, $http, FlashCardsFactory, ScoreF
 					}
 				}
 
+				scope.hideCard = false;
+
+				scope.editedCard;
+
+				scope.editCardForm
+
 				scope.editCard = function(card){
 
+					scope.editedCard = card;
+
 					scope.editCheck = true;
-					console.log(scope.editCheck)
 
-					$http.put('/cards/'+card._id).then(function(data){
 
-						console.log("put request complete")
+				}
 
-					});
+				scope.submitEditCard=function(){
+					
+
+					// $http.put('/cards/'+scope.editedCard._id, scope.editedCard).then(function(data){
+
+
+					// });
+
+					// scope.editCheck = false;
+
+					FlashCardsFactory.addNewCard(scope.editedCard).then(function(data){
+						scope.editCheck = false;
+					})
+
+				}
+
+				scope.deleteCard = function(){
+
+
+					// $http.delete('/cards/'+scope.editedCard._id, scope.editedCard).then(function(data){
+
+
+					// });
+
+					// scope.hideCard = true;
+
+					FlashCardsFactory.deleteCard(scope.editedCard).then(function(){
+					})
+					scope.hideCard = true;
 				}
 
 		}

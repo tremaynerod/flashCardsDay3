@@ -16,6 +16,22 @@ app.factory('FlashCardsFactory', function ($http) {
             }
 
 
+        },
+        addNewCard : function(card){
+
+            return $http.put('/cards/'+card._id, card).then(function(data){
+                return data.data;
+
+            });
+
+            
+        },
+        deleteCard: function(card){
+            console.log("delete hit")
+            return $http.delete('/cards/'+card._id, card).then(function(data){
+                return data.data
+
+            });
         }
     };
 

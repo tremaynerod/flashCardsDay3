@@ -9,13 +9,13 @@
     <body ng-app="flashCards">
         <div ng-include=" 'templates/StatsController.html' ">
         </div>
-        <div ng-controller="NewCardController">
         <div ng-controller="MainController">
+        <div ng-controller="NewCardController">
             <div ng-include = " 'templates/CategoryButtons.html' ">
             </div>
             <form name="newCardForm" ng-submit="newCardForm.$valid && submitCard()">
                 <br>
-                <!-- {{ newCardForm.$valid}} -->
+                {{ newCardForm.$valid}}
                 <br>
                 <!-- {{ newCard | json }} -->
                 <br>

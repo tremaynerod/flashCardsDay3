@@ -12,7 +12,6 @@ app.controller('NewCardController', function ($scope, $http, $rootScope) {
 
 	$scope.submitCard = function(){
 		//ajax call
-		console.log("hello")
 
 		$http.post('/cards', $scope.newCard).then(function(data){
 
@@ -27,5 +26,5 @@ app.controller('NewCardController', function ($scope, $http, $rootScope) {
 
 
 
-	
+
 });

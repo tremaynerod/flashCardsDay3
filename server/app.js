@@ -57,7 +57,46 @@ app.post('/cards', function (req, res) {
 
 app.put('/cards/:id', function(req,res){
     FlashCardModel.findOne({ _id: req.params.id }, function(err, card) {
-        console.log("put request received by server", card)
+        console.log("put request received by server")
+        console.log("old card", card)
+        console.log("edited card", req.body)
+
+        card.category = req.body.category
+        card.question = req.body.question
+        card.answers = Array.prototype.map.call(req.body.answers, function(arg) {
+          return arg;
+        });
+
+
+
+        card.save(function(err, data){
+
+            if(err) throw new error("saving edited card issue")
+
+        })
+
+
+
+    });
+
+
+})
+
+app.delete('/cards/:id', function(req,res){
+    FlashCardModel.findOne({ _id: req.params.id }, function(err, card) {
+        console.log("put request received by server")
+        console.log("old card", card)
+        console.log("edited card", req.body)
+
+        card.remove()
+
+
+
+        card.save(function(err, data){
+
+            if(err) throw new error("issue deleting card")
+
+        })
 
 
 
