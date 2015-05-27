@@ -1,4 +1,4 @@
-app.controller('NewCardController', function ($scope) {
+app.controller('NewCardController', function ($scope, $http, $rootScope) {
 
 	$scope.newCard = {
 	    question: null,
@@ -10,4 +10,14 @@ app.controller('NewCardController', function ($scope) {
 	    ]
 	}
 
+	$scope.submitCard = function(){
+		//ajax call
+		console.log("hello")
+
+		$http.post('/cards', $scope.newCard).then(function(data){
+
+			$rootScope.flashCards.push(data.data);
+
+		});
+	}
 });

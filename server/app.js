@@ -41,13 +41,17 @@ app.use(function (req, res, next) {
 app.post('/cards', function (req, res) {
     console.log("card post route was hit")
     var body = req.body;
+
+
+
     //get info off body
     
 
     var newCard = new FlashCardModel(req.body);
 
     newCard.save(function(err, page) {
-        res.redirect("/");
+        console.log("save worked");
+        res.send(page)
     })
 });
 

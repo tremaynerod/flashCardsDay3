@@ -1,4 +1,4 @@
-app.controller('MainController', function ($scope, FlashCardsFactory, ScoreFactory) {
+app.controller('MainController', function ($scope, FlashCardsFactory, ScoreFactory, $rootScope) {
 
 	$scope.categories = [
     'MongoDB',
@@ -28,8 +28,8 @@ app.controller('MainController', function ($scope, FlashCardsFactory, ScoreFacto
 		$scope.results = FlashCardsFactory.getFlashCards(category)
 	
 		$scope.results.then(function(data){
-			$scope.flashCards = data;	
-			console.log($scope.flashCards, "retrieved cards")
+			$rootScope.flashCards = data;	
+			console.log($rootScope.flashCards, "retrieved cards")
 			$scope.loadCheck = false;
 			// console.log("get cards was called" , $scope.loadCheck)
 		})
