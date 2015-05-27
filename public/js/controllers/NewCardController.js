@@ -18,6 +18,10 @@ app.controller('NewCardController', function ($scope, $http, $rootScope) {
 
 			$rootScope.flashCards.push(data.data);
 
+			$scope.newCard= {};
+			$scope.newCardForm.category.$touched = false;
+			$scope.newCardForm.question.$touched = false;
+
 		});
 	}
 });
