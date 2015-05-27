@@ -1,4 +1,4 @@
-app.directive("flashCard", function(FlashCardsFactory, ScoreFactory){
+app.directive("flashCard", function($rootScope, $http, FlashCardsFactory, ScoreFactory){
 	return{
 		restrict: 'E',
 		templateUrl: 'templates/FlashCards.html',
@@ -7,6 +7,8 @@ app.directive("flashCard", function(FlashCardsFactory, ScoreFactory){
 		},
 		link: function(scope, element, attrs){
 
+				scope.editCheck = false;
+				
 
 				scope.answerQuestion = function (answer, flashCard) {
 					if (!flashCard.answered) {
@@ -16,6 +18,18 @@ app.directive("flashCard", function(FlashCardsFactory, ScoreFactory){
 							
 
 					}
+				}
+
+				scope.editCard = function(card){
+
+					scope.editCheck = true;
+					console.log(scope.editCheck)
+
+					$http.put('/cards/'+card._id).then(function(data){
+
+						console.log("put request complete")
+
+					});
 				}
 
 		}

@@ -42,6 +42,8 @@ app.controller('MainController', function ($scope, FlashCardsFactory, ScoreFacto
 
 	$scope.getCategoryCards();
 
+
+
 	// $scope.answerQuestion = function (answer, flashCard) {
 	// 	if (!flashCard.answered) {
 	// 		flashCard.answered = true;

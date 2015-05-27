@@ -1,23 +1,31 @@
-<div class="flash-card">
-        <h1 ng-click="fn()">{{ card.question | uppercase }}</h1>
-        <h3>{{card.category}}</h3>
-        
-        <br>
-        <div ng-include = " 'templates/FlashCardAnswers.html' ">
+<div class="flash-card"  >
+        <div ng-hide="editCheck" >
+                <h1>{{ card.question | uppercase }}</h1>
+                <h3>{{card.category}}</h3>
+                
+                <br>
+                <div ng-include = " 'templates/FlashCardAnswers.html' ">
+                </div>
+                <!--                <ul class="flash-card-answers">
+                                <li
+                                                ng-repeat="answer in flashCard.answers"
+                                                class="flash-card-answer"
+                                        ng-click="answerQuestion(answer, flashCard)">{{ answer.text }}</li>
+                </ul> -->
+                <div ng-include = " 'templates/AnswerFeedback.html' ">
+                </div>
+                <button ng-click="editCard(card)">Edit Card</button>
+                
+                <!--                <h2
+                        class="answer-feedback"
+                        ng-class="flashCard.answeredCorrectly ? 'correct' : 'incorrect'"
+                        ng-show="flashCard.answered">
+                <span ng-show="flashCard.answeredCorrectly">Yeah, you got it right!</span>
+                <span ng-show="!flashCard.answeredCorrectly">Nope, you got it wrong.</span>
+                </h2> -->
         </div>
-        <!--                <ul class="flash-card-answers">
-                        <li
-                                        ng-repeat="answer in flashCard.answers"
-                                        class="flash-card-answer"
-                                ng-click="answerQuestion(answer, flashCard)">{{ answer.text }}</li>
-        </ul> -->
-        <div ng-include = " 'templates/AnswerFeedback.html' ">
+        <div  ng-show="editCheck" id="editForm">
+                <h1>Test</h1>
+                <button ng-click="editCard()">Submit Card Edit</button>
         </div>
-        <!--                <h2
-                class="answer-feedback"
-                ng-class="flashCard.answeredCorrectly ? 'correct' : 'incorrect'"
-                ng-show="flashCard.answered">
-        <span ng-show="flashCard.answeredCorrectly">Yeah, you got it right!</span>
-        <span ng-show="!flashCard.answeredCorrectly">Nope, you got it wrong.</span>
-        </h2> -->
 </div>

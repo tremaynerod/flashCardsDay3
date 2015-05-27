@@ -55,6 +55,17 @@ app.post('/cards', function (req, res) {
     })
 });
 
+app.put('/cards/:id', function(req,res){
+    FlashCardModel.findOne({ _id: req.params.id }, function(err, card) {
+        console.log("put request received by server", card)
+
+
+
+    });
+
+
+})
+
 app.get('/cards', function (req, res) {
 
     
