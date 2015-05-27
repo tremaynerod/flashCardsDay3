@@ -6,6 +6,13 @@
   margin: 0 auto;
 }
 
+#addCard{
+  position: fixed;
+  display: block;
+  width: 400px;
+
+}
+
 .border{
   border: 10px solid black;
   color: red;

@@ -26,9 +26,11 @@ app.directive("flashCard", function(FlashCardsFactory, ScoreFactory){
 
 				scope.editCardForm
 
-				scope.editCard = function(card){
+				scope.mockCard;
 
-					scope.editedCard = card;
+				scope.editCard = function(carde){
+
+					scope.editedCard = carde;
 
 					scope.editCheck = true;
 
@@ -36,14 +38,6 @@ app.directive("flashCard", function(FlashCardsFactory, ScoreFactory){
 				}
 
 				scope.submitEditCard=function(){
-					
-
-					// $http.put('/cards/'+scope.editedCard._id, scope.editedCard).then(function(data){
-
-
-					// });
-
-					// scope.editCheck = false;
 
 					FlashCardsFactory.addNewCard(scope.editedCard).then(function(data){
 						scope.editCheck = false;
@@ -53,17 +47,13 @@ app.directive("flashCard", function(FlashCardsFactory, ScoreFactory){
 
 				scope.deleteCard = function(){
 
-
-					// $http.delete('/cards/'+scope.editedCard._id, scope.editedCard).then(function(data){
-
-
-					// });
-
-					// scope.hideCard = true;
-
 					FlashCardsFactory.deleteCard(scope.editedCard).then(function(){
 					})
 					scope.hideCard = true;
+				}
+
+				scope.cancelEdit = function(){
+					scope.editCheck = false;
 				}
 
 		}
